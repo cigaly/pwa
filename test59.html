@@ -48,7 +48,7 @@
                             authSecret = rawAuthSecret ?
                                 btoa(String.fromCharCode.apply(null, new Uint8Array(rawAuthSecret))) : '';
                             endpoint = subscription.endpoint;
-                            return fetch('./register', {
+                            return fetch('http://localhost:3111/register', {
                                 method: 'post',
                                 headers: new Headers({
                                     'content-type': 'application/json'

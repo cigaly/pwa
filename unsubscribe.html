@@ -18,12 +18,12 @@
                             return;
                         }
                         subscription.unsubscribe()
-                        then(function () {
-                            console.log("Successfully unsubscribed!.");
-                        })
-                        .catch((e) => {
-                            logger.error('Error thrown while unsubscribing from push messaging', e);
-                        });
+                            .then(function () {
+                                console.log("Successfully unsubscribed!.");
+                            })
+                            .catch((e) => {
+                                logger.error('Error thrown while unsubscribing from push messaging', e);
+                            });
                     });
             });
 
