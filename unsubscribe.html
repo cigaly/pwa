@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Progressive Times</title>
+    <link rel="manifest" href="/manifest.json">
+    <button type="button" id="unsubscribe">Unsubscribe</button>
+</head>
+<body>
+<script>
+    function unsubscribe () {
+        navigator.serviceWorker.ready
+            .then((serviceWorkerRegistration) => {
+                serviceWorkerRegistration.pushManager.getSubscription()
+                    .then((subscription) => {
+                        if (!subscription) {
+                            console.log("Not subscribed, nothing to do.");
+                            return;
+                        }
+                        subscription.unsubscribe()
+                        then(function () {
+                            console.log("Successfully unsubscribed!.");
+                        })
+                        .catch((e) => {
+                            logger.error('Error thrown while unsubscribing from push messaging', e);
+                        });
+                    });
+            });
+
+    }
+    document.getElementById("unsubscribe").addEventListener("click", unsubscribe);
+</script>
+</body>
+</html>
